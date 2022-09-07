@@ -1,4 +1,4 @@
-# typescript-app
+# Weather app
 
 ## Project setup
 ```

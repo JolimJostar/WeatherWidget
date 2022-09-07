@@ -3,7 +3,7 @@
     <n-icon size="20" class="settings-button" @click="onSettingsClick">
       <img src="@/assets/icons/Settings.svg"
     /></n-icon>
-    <n-space vertical>
+    <n-space vertical v-if="cities.length > 0">
       <n-card v-for="city in cities" :key="city.name" :bordered="false">
         <h3>{{ `${city.name}, ${city.sys.country}` }}</h3>
         <div class="weather-main">
@@ -45,6 +45,9 @@
         </n-grid>
       </n-card>
     </n-space>
+    <n-text type="warning" v-else>
+      No cities selected, please select a city in settings
+    </n-text>
   </div>
 </template>
 

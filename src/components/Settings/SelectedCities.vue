@@ -1,7 +1,7 @@
 <template>
-  <div class="selected-cities">
+  <div class="selected-cities" v-if="selectedCities.length > 0">
     <draggable
-      v-model="selctedCities"
+      v-model="selectedCities"
       group="people"
       item-key="id"
       handle=".drag-icon"
@@ -31,6 +31,7 @@
       </template>
     </draggable>
   </div>
+  <n-text type="warning" v-else>No cities seleted</n-text>
 </template>
 
 <script lang="ts">
@@ -48,7 +49,7 @@ export default defineComponent({
       store.commit(MutationType.RemoveSelectedCity, city);
     }
 
-    const selctedCities: WritableComputedRef<City[]> = computed({
+    const selectedCities: WritableComputedRef<City[]> = computed({
       get() {
         return store.getters.getSelectedCities;
       },
@@ -59,7 +60,7 @@ export default defineComponent({
 
     return {
       onRemoveCity,
-      selctedCities,
+      selectedCities,
     };
   },
   components: {
